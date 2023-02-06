@@ -15,30 +15,30 @@
 กรุณาไปเติมโค้ดให้ครบด้วย
 ``` c
 // src/main.cpp
-const char *ssid = "Your Wifi Name";
-const char *password = "Your Wifi Password";
+const char *ssid = "Galaxy A30C9C8";
+const char *password = "himl9080";
 ```
 
 ## Define
 ไปเปลี่ยนตาม pin ที่น้องต่อด้วย
 ``` c
 // src/main.cpp
-#define red <led red pin>
-#define yellow <led yellow pin>
-#define green <led green pin>
-#define ldr <ldr pin>
-#define button <button pin>
+#define red 26
+#define yellow 25
+#define green 33
+#define ldr 34
+#define button 27
 
-#define light <แสดงมันมืด มีค่าเท่าไหร่>
+#define light 0
 ```
 
 ## Point
 ไปเปลี่ยนตาม point ของเราด้วย (point == กลุ่มที่)
 ``` c
 // src/traffic.h
-const String point = "กลุ่มที่";
-const int nearby_1 = "กลุ่มใกล้เคียง (กลุ่มที่ +-1)";
-const int nearby_2 = "กลุ่มใกล้เคียง (กลุ่มที่ +-1)";
+const String point = "5";
+const int nearby_1 = 3;
+const int nearby_2 = 5;
 ```
 
 ## GET_traffic
