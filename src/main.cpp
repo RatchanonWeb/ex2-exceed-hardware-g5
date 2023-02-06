@@ -15,7 +15,7 @@
 #define light 0
 
 int state = 1;
-int count = 0;
+int cnt = 0;
 Bounce debouncer = Bounce();
 
 void Connect_Wifi();
@@ -47,11 +47,20 @@ void loop()
   {
     digitalWrite(green, HIGH);
     digitalWrite(red, LOW);
+    //Serial.println(debouncer.fell());
+    delay(1000);
+    cnt++;
+    if(cnt == 1){
+      POST_traffic("green");
+      GET_traffic();
+    }
+    //while(!debouncr.fell());
     if(debouncer.fell()){
       state = 2;
+      //Serial.println(cnt);
+      cnt = 0;
     }
-    POST_traffic("green");
-    GET_traffic();
+    //state = 2;
     // while led GREEN
 
   }
@@ -59,22 +68,33 @@ void loop()
   {
     digitalWrite(yellow, HIGH);
     digitalWrite(green, LOW);
-    delay(8000);
     state = 3;
-    POST_traffic("yellow");
-    GET_traffic();
+    cnt++;
+    if(cnt == 1){
+      POST_traffic("yellow");
+    }
+    if(state == 3){
+      cnt = 0;
+    }
+    delay(8000);
+    
     // while led YELLOW
   }
   else if (state == 3)
   {
     digitalWrite(red, HIGH);
     digitalWrite(yellow, LOW);
-    delay(5000);
-    Serial.println(ch);
+    //Serial.println(ch);
+    cnt++;
+    if(cnt == 1){
+      POST_traffic("red");
+      GET_traffic();
+    }
     if(ch < 4095){
       state = 1;
+      cnt = 0;
     }
-    POST_traffic("red");
+    delay(5000);
     // while led RED
   }
 }
